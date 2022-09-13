@@ -30,8 +30,9 @@ module Kata_range
       seq = (range[0].to_i+1...range[1].to_i+1)
       return seq.to_a
     when "{}"
-      seq = (range[0].to_i...range[1].to_i+1)
-      return seq.to_a
+      seq = range
+      seq.to_a
+      return seq.to_a.map(&:to_i)
     end
 
   end
@@ -47,7 +48,13 @@ module Kata_range
   def contains(range,group)
     range_array = get_array(valid_format_input(range))
     colection = get_array(valid_group_input(group))
-    return (range_array & colection)
+
+    if (range_array & colection).length == colection.length then
+      return true
+    else
+      return Exception.new "do not contain all the elements"
+    end
+      
   end
 
   def get_all_points(range)
@@ -57,5 +64,16 @@ module Kata_range
 
   end
 
-  
+  def contains_a_range(range1 , range2)
+    range_array1 = get_array(valid_format_input(range1))
+    range_array2 = get_array(valid_format_input(range2))
+
+    if (range_array1 & range_array2).length == range_array2.length then
+      return true
+    else
+      return Exception.new "do not contain all the elements"
+    end
+
+  end
+
 end

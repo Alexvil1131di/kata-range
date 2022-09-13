@@ -54,10 +54,16 @@ class Test_kata_range < Minitest::Test
     end
 
     def test_find_a_group_of_numbers_on_a_range
-        assert_equal [5,6,7,8], Kata_range.contains("[2,9]","{5,8}")
+        assert_equal true, Kata_range.contains("[2,8]","{5,8}")
     end
 
     def test_get_all_points_should_return_the_entire_colection_of_numbers_in_that_range
         assert_equal [5,6,7,8], Kata_range.get_all_points("(4,9)")
     end
+
+    def test_if_a_range_contain_all_the_values_of_another_range
+        assert_equal true, Kata_range.contains_a_range("[2,9]","[3,4]")
+    end
+
+
 end
